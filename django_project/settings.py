@@ -11,9 +11,9 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
 SECRET_KEY = os.getenv("SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "python-jobs-production.up.railway.app", "*"]
 
 # APPS
 # ------------------------------------------------------------------------------
