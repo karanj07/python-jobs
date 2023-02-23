@@ -1,14 +1,14 @@
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
-
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
-SECRET_KEY = "django-insecure-0peo@#x9jur3!h$ryje!$879xww8y1y66jx!%*#ymhg&jkozs2"
+SECRET_KEY = os.getenv("SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
@@ -179,9 +179,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # EMAIL SMTP
 # ------------------------------------------------------------------------------
 
-EMAIL_HOST = 'smtp-relay.sendinblue.com'
-EMAIL_HOST_USER = 'karanj07@gmail.com'
-EMAIL_HOST_PASSWORD = '#######'
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False

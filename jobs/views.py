@@ -89,10 +89,11 @@ def upworkAll(request):
 		if "is_saved" not in feed:upworkJob.save()
 
 		feed["published_obj"] = published_obj
-
+		feed["published_ts"] = published_obj.timestamp()
 		entries.append(feed)
 
-		
+	entries.sort(key=lambda r: -r.published_ts)
+	
 	return render(request, "jobs/all-upwork.html", {'jobs':entries})
 
 def indeedAll(request):
