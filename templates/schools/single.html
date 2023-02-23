@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+
+{% block content %}
+        <div class="single-post">
+            <h2>{{school.name}}</h2>
+            <p class="address">{{school.address}}</p>
+            <div class="description">
+                {{school.description | safe}}
+            </div>
+        </div>
+{% endblock content %}

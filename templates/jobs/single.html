@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+
+{% block content %}
+        <div class="single-post">
+            <h2>{{job.name}}</h2>
+            <p class="address">{{job.address}}</p>
+            <div class="description">
+                {{job.description | safe}}
+            </div>
+        </div>
+{% endblock content %}

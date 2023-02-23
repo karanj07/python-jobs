@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+
+        <div class="all-jobs">
+            <div class="row">
+                <div class="col-12">
+                    <h5>{{title}}</h5>
+                </div>
+            {% for job in jobs %}
+                <div class="col-12">
+                    <div class="list-entry">
+                        <h4>{{job.title}} </h4><p><i>{{job.date}}</i></p>
+                        <p>{{job.summary|safe}}</p>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+{% endblock content %}

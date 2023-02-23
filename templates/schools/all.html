@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+
+        <div class="all-schools">
+            <div class="row">
+            {% for school in schools %}
+                <div class="col-12">
+                    <div class="list-entry">
+                        <h4><a href="{% url 'single_school' school.id %}">{{school.name}}</a></h4>
+                        <p>{{school.address}}</p>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+{% endblock content %}
