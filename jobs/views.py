@@ -94,12 +94,16 @@ def upworkAll(request):
 
 	entries.sort(key=lambda r: -r.published_ts)
 	
-	return render(request, "jobs/all-upwork.html", {'jobs':entries})
+	if request.GET.get('cron','') == "1":
+		return  render(request, "jobs/all-upwork.html", {'jobs':[]})
+	else:
+		return render(request, "jobs/all-upwork.html", {'jobs':entries})
 
 def indeedAll(request):
 	headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:110.0) Gecko/20100101 Firefox/110.0'}
-	
-	req = requests.get("http://in.indeed.com/jobs?q=django&l=Gurgaon%2C+Haryana&sort=date&fromage=7&vjk=1e6aae454849931b", headers=headers)
+	base_url = "http://in.indeed.com/jobs?q=django&l=Gurgaon%2C+Haryana&sort=date&fromage=7&vjk=1e6aae454849931b"
+	req = requests.get(base_url, headers=headers, timeout=5)
+	print(req)
 	web_s = req.text
 	soup = BeautifulSoup(web_s, "html.parser") # Parse
 	page_title = soup.title.string # Get Value of Title tag
@@ -120,6 +124,35 @@ def indeedAll(request):
 				entries.append({"title":job_title_text, "date": job_date_text})
 
 	return render(request, "jobs/all-indeed.html", {'jobs':entries, 'title':page_title})
+
+
+def indeedAllBS(request):
+	headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:110.0) Gecko/20100101 Firefox/110.0'}
+	base_url = "http://in.indeed.com/jobs?q=django&l=Gurgaon%2C+Haryana&sort=date&fromage=7&vjk=1e6aae454849931b"
+	req = requests.get(base_url, headers=headers, timeout=5)
+	print(req)
+	web_s = req.text
+	soup = BeautifulSoup(web_s, "html.parser") # Parse
+	page_title = soup.title.string # Get Value of Title tag
+	entries = []
+	unordered_list = soup.find("ul", {"class": "jobsearch-ResultsList"})
+	if unordered_list != None:
+		children = unordered_list.findChildren("li", recursive=False)
+		print(len(children))
+		for child in children:
+			job_h = child.find("h2")
+			job_a = job_h.find("a") if job_h != None else None
+			job_title = job_a.find("span") if job_a != None else None
+			job_date = child.find("span", {"class": "date"})
+			print(job_date)
+			if job_title != None and job_date != None:
+				job_title_text = job_title.get_text()
+				job_date_text = job_date.get_text()
+				entries.append({"title":job_title_text, "date": job_date_text})
+
+	return render(request, "jobs/all-indeed.html", {'jobs':entries, 'title':page_title})
+
+
 
 class CreateJob(View):
 	def get(self, request):
