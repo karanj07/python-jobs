@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+        <div class="all-jobs">
+            <div class="row">
+                <div class="col-12">
+                    <h5><strong>Total:</strong> {{questions|length}} questions</h5>
+                </div>
+                {% if request.user.is_superuser %}
+                <div class="create-question-form">
+                    {% include '../parts/messages.html' %}
+
+                    <form action="?" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    {% for ques in questions %}
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-heading{{ques.id}}">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ques.id}}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ques.id}}">
+                             {{ forloop.counter }}. {{ques.question}}
+                             {% if request.user.is_superuser %}
+                             &nbsp;<a class="q-link" href="{% url 'catques' pk=cat_id ques_id=ques.id %}">Edit</a>
+                             {% endif %}
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse{{ques.id}}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ques.id}}">
+                          <div class="accordion-body">
+                            {{ques.answer|linebreaks}}
+                          </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+{% endblock content %}

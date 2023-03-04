@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+
+        <div class="all-jobs">
+            <div class="row">
+                <div class="col-12">
+                    <h5><strong>Total:</strong> {{categories|length}} categories</h5>
+                </div>
+
+               <ul>
+
+                    {% for cat in categories %}
+
+                    <li>
+                        <a class="dropdown-item" href="{% url 'catques' cat.id %}">{{cat.name}}</a>
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+{% endblock content %}

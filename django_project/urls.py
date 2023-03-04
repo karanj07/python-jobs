@@ -9,6 +9,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("", include("pages.urls")),
 
+    path("interview-questions/", include("interviews.urls")),
     path("jobs/", include("jobs.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

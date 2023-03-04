@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "accounts",
     "pages",
     "jobs",
+    "interviews",
     "ckeditor",
 ]
 
