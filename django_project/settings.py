@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = os.getenv("DEBUG")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "python-jobs-production.up.railway.app", "*"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "python-jobs-production.up.railway.app"]
 
 # APPS
 # ------------------------------------------------------------------------------
@@ -49,11 +49,11 @@ INSTALLED_APPS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -205,8 +205,8 @@ MESSAGE_TAGS = {
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
 # https://docs.djangoproject.com/en/dev/ref/settings/#internal-ips
 INTERNAL_IPS = ["127.0.0.1"]
-if not DEBUG:
-    CSRF_TRUSTED_ORIGINS = ["https://python-jobs-production.up.railway.app"]
+
+CSRF_TRUSTED_ORIGINS = ["https://python-jobs-production.up.railway.app"]
 
 # CUSTOM USER MODEL CONFIGS
 # ------------------------------------------------------------------------------
