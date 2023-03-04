@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "crispy_forms",
     "debug_toolbar",
+    "corsheaders",
     "bs4",
     
     # Local
