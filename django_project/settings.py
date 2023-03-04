@@ -204,6 +204,8 @@ MESSAGE_TAGS = {
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
 # https://docs.djangoproject.com/en/dev/ref/settings/#internal-ips
 INTERNAL_IPS = ["127.0.0.1"]
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = ["https://python-jobs-production.up.railway.app"]
 
 # CUSTOM USER MODEL CONFIGS
 # ------------------------------------------------------------------------------
