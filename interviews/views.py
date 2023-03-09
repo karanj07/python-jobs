@@ -10,7 +10,7 @@ from django.db.models import Count
 
 def index(request):
 	#dests = Job.objects.all()
-	categories = Category.objects.annotate(number_of_ques = Count("questions")).all()
+	categories = Category.objects.annotate(number_of_ques = Count("questions")).order_by("id").all()
 	
 	return render(request, "interviews/all.html", {'categories':categories})
 
@@ -23,7 +23,7 @@ def categoryQuestions(request, pk, ques_id=None):
 	else:
 		form_data = {'category': pk}
 
-	questions = Question.objects.filter(category=pk)
+	questions = Question.objects.filter(category=pk).order_by("id")
 	post_form = QuestionModelForm(request.POST)
 	if request.POST:
 		if ques_id and post_form.is_valid():

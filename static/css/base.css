@@ -36,10 +36,13 @@ form .form-group{margin-bottom: 20px;}
 form .django-ckeditor-widget{width: 100%; }
 form .django-ckeditor-widget textarea{height: 150px;}
 form select{max-width: 400px;}
+
+
+.all-categories ol li{margin-bottom: 15px;}
+
 .create-question-form{margin: 30px 0;}
 .create-question-form #id_question{height: 60px;}
 
 .accordion {margin-bottom: 30px;}
 .accordion .accordion-item{margin-bottom: 20px; border-top: 1px solid rgba(0,0,0,.125);}
-
-.all-categories ol li{margin-bottom: 15px;}
+.accordion .accordion-item .accordion-body{white-space: pre-wrap;}

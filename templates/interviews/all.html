@@ -13,7 +13,7 @@
                     {% for cat in categories %}
 
                     <li>
-                        <a target="_blank"  href="{% url 'catques' cat.id %}">{{cat.name}}</a> ({{cat.number_of_ques}})
+                        <a href="{% url 'catques' cat.id %}">{{cat.name}}</a> ({{cat.number_of_ques}})
                     </li>
 
                     {% endfor %}
