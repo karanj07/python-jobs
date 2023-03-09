@@ -1,5 +1,5 @@
+from ckeditor.fields import RichTextField
 from django.db import models
-from ckeditor.fields import RichTextField 
 
 
 # Create your models here.
@@ -19,7 +19,7 @@ class Category(models.Model):
 class Question(models.Model):
 	question = models.TextField(default="", blank=True)
 	answer = RichTextField(default="", blank=True) # blank=true - field is not required
-	category = models.ForeignKey(Category, default=0, on_delete=models.SET_DEFAULT)
+	category = models.ForeignKey(Category, default=0, related_name='questions', on_delete=models.SET_DEFAULT)
 	is_starred = models.BooleanField(default=False)
 	is_trivial = models.BooleanField(default=False)
 	created_at = models.DateTimeField(auto_now_add=True)

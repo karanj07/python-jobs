@@ -3,23 +3,22 @@
 {% block content %}
 
 
-        <div class="all-jobs">
+        <div class="all-jobs all-categories">
             <div class="row">
                 <div class="col-12">
                     <h5><strong>Total:</strong> {{categories|length}} categories</h5>
                 </div>
 
-               <ul>
-
+               <ol>
                     {% for cat in categories %}
 
                     <li>
-                        <a class="dropdown-item" href="{% url 'catques' cat.id %}">{{cat.name}}</a>
+                        <a target="_blank"  href="{% url 'catques' cat.id %}">{{cat.name}}</a> ({{cat.number_of_ques}})
                     </li>
 
                     {% endfor %}
 
-                </ul>
+                </ol>
             </div>
         </div>
 {% endblock content %}

@@ -41,3 +41,5 @@ form select{max-width: 400px;}
 
 .accordion {margin-bottom: 30px;}
 .accordion .accordion-item{margin-bottom: 20px; border-top: 1px solid rgba(0,0,0,.125);}
+
+.all-categories ol li{margin-bottom: 15px;}
