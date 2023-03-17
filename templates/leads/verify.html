@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+
+    {% include '../parts/messages.html' %}
+
+    <form action="?" method="post">
+            {% csrf_token %}
+           
+            <div class="form-group">
+                <label for="emails_list">Emails_list:</label> 
+                <textarea class="form-control" id="emails_list" name="emails_list" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+
+        <div class="result">
+            <div class="row">
+                <div class="col-12 col-md-4 col-xs-9">
+                    {% for email in res.keys %}
+                        <p>{{email}}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-12 col-md-4 col-xs-9">
+                    {% for v in res.values %}
+                        <p>{{v}}</p>
+                    {% endfor %}
+                </div>
+        </div>
+        <!--<form action="?" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input class="form-control" required id="email" name="email" type="email"/>
+            </div>
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input class="form-control" id="first_name" name="first_name" type="text"/>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input class="form-control" id="pwd" name="password" type="password"/>
+            </div>
+        
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Submit</button>
+            </div>
+        </form>-->
+{% endblock content %}

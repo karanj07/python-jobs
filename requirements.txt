@@ -30,4 +30,5 @@ sgmllib3k==1.0.0
 soupsieve==2.4
 sqlparse==0.4.3
 urllib3==1.26.14
+verify-email==2.4.3
 whitenoise==6.0.0
