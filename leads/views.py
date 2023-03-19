@@ -12,7 +12,7 @@ from django.db.models import Count
 
 class leadsVerify(View):
 	def get(self, request):
-		context={res:{}}
+		context={"res":{}}
 		
 		return render(request, "leads/verify.html", context)
 
